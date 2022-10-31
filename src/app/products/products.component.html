@@ -1,0 +1,26 @@
+<app-search (changeSearchinput)="onSearchTextEntered($event)"></app-search>
+<div *ngFor="let p of products">
+   <div class="product-conatiner" [ngStyle]="{backgroundColor:p.avaliable==='Avaliable' ? '#D5F5E3': '#FADBD8'}">
+    <div class="image-conatner">
+      <img [src]="p.image" alt="" style="max-height:200px;max-width:200px;">
+    </div>
+    <div>
+        <div class="name-container">
+         <h6>{{p.name}}</h6>
+        </div>
+        <div class="detailsContainer">
+         <div class="details">{{p.avaliable}}</div>
+         <div class="details"><b>Price:</b>{{p.price}}</div>
+         <div class="details"><b>Color:</b>{{p.color}}</div>
+        </div>
+    </div>
+    <div class="options">
+       <div class="btn btn-success">Show Details</div>
+       <div class="btn btn-warning" *ngIf="p.avaliable==='Avaliable';else notify">Buy Now</div>
+       <ng-template #notify>
+        <div class="btn btn-danger">Notify me</div>
+       </ng-template>
+    </div>
+   </div>
+</div>
+
